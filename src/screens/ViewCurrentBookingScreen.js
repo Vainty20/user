@@ -9,7 +9,7 @@ export default function ViewCurrentBookingScreen({ route }) {
   const { id } = route.params;
   const { currentBooking, loading } = getCurrentBooking({ id });
 
-  if (loading) return <Loading/>;
+  if (loading) return <Loading />;
 
   return (
     <SafeAreaView style={styles.container}>
@@ -24,11 +24,16 @@ export default function ViewCurrentBookingScreen({ route }) {
           <View style={styles.header}>
             <Text style={styles.status}>
               {currentBooking.driverId
-                ? currentBooking.isDropoff
-                  ? "Finished"
-                  : "Waiting"
-                : "Not Confirmed "}
+                ? currentBooking.isPickupOff
+                  ? currentBooking.isDropoff
+                    ? "Finished"
+                    : "Dropoff Confirmed"
+                  : currentBooking.isPickup
+                  ? "Pickup Confirmed"
+                  : "Waiting for Pickup"
+                : ""}
             </Text>
+
             <View style={styles.rideInfoContainer}>
               <View style={styles.rideInfoDiv}>
                 <Ionicons name="speedometer-outline" size={18} />

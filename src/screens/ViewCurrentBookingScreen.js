@@ -23,15 +23,13 @@ export default function ViewCurrentBookingScreen({ route }) {
         <View style={styles.cardContainer}>
           <View style={styles.header}>
             <Text style={styles.status}>
-              {currentBooking.driverId
-                ? currentBooking.isPickupOff
-                  ? currentBooking.isDropoff
-                    ? "Finished"
-                    : "Dropoff Confirmed"
-                  : currentBooking.isPickup
-                  ? "Pickup Confirmed"
-                  : "Waiting for Pickup"
-                : ""}
+              {currentBooking.isDropoff
+                ? "Dropoff"
+                : currentBooking.isPickUp
+                ? "Pickup"
+                : currentBooking.driverId
+                ? "Confirmed"
+                : "Waiting"}
             </Text>
 
             <View style={styles.rideInfoContainer}>

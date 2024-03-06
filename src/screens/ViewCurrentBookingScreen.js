@@ -5,12 +5,13 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import getCurrentBooking from "../hooks/getCurrentBooking";
 import Loading from "../components/Loading";
 
-export default function ViewCurrentBookingScreen({ route }) {
+export default function ViewCurrentBookingScreen({ route, navigation }) {
   const { id } = route.params;
   const { currentBooking, loading } = getCurrentBooking({ id });
 
   if (loading) return <Loading />;
 
+  if (currentBooking.isDropoff) return navigation.replace("Home");
   return (
     <SafeAreaView style={styles.container}>
       <Map

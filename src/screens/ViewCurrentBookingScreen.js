@@ -4,19 +4,28 @@ import Map from "../components/Map";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import getCurrentBooking from "../hooks/getCurrentBooking";
 import Loading from "../components/Loading";
+import getUserLocation from "../hooks/getUserLocation";
 
 export default function ViewCurrentBookingScreen({ route, navigation }) {
   const { id } = route.params;
-  const { currentBooking, loading } = getCurrentBooking({ id });
+  const { currentBooking, loading: currentBookingLoading } = getCurrentBooking({
+    id,
+  });
+  const {
+    location,
+    locationCoordinates,
+    loading: locationLoading,
+  } = getUserLocation();
 
-  if (loading) return <Loading />;
+  if (currentBookingLoading || locationLoading) return <Loading />;
 
   if (currentBooking.isDropoff) return navigation.replace("Home");
+
   return (
     <SafeAreaView style={styles.container}>
       <Map
-        origin={currentBooking.pickupLocation}
-        originCoords={currentBooking.pickupCoords}
+        origin={location}
+        originCoords={locationCoordinates}
         destination={currentBooking.dropoffLocation}
         destinationCoords={currentBooking.dropoffCoords}
       />

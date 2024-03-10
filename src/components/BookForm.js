@@ -58,7 +58,7 @@ export default function BookForm({
     const pricePerKilometer = 20;
     const distanceInKilometers = distanceInMeters / 1000;
 
-    if (distanceInKilometers >= 2) {
+    if (distanceInKilometers > 2) {
       totalPrice = (distanceInKilometers * pricePerKilometer) + minimumPrice;
     } else {
       totalPrice = 50

@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
     color: "gray",
   },
   form: {
-    width: "80%",
+    width: "90%",
   },
   input: {
     width: "100%",

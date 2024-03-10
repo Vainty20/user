@@ -135,7 +135,7 @@ export default function BookConfirmScreen({ route, navigation }) {
           </View>
           <View style={styles.minimumPrice}>
             <Text>
-              Total of{" "}
+              Total of
               <Text style={{ fontWeight: "bold", fontSize: 18 }}>
                 {rideInfo.ridePrice}
               </Text>

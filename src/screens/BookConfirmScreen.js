@@ -135,13 +135,15 @@ export default function BookConfirmScreen({ route, navigation }) {
           </View>
           <View style={styles.minimumPrice}>
             <Text>
-              Total of
+              Total of{" "}
               <Text style={{ fontWeight: "bold", fontSize: 18 }}>
                 {rideInfo.ridePrice}
               </Text>
             </Text>
-            <TouchableOpacity onPress={()=> navigation.push("FareMatrix")}>
-              <Text>View our Fare Matrix</Text>
+            <TouchableOpacity onPress={() => navigation.push("FareMatrix")}>
+              <Text style={{ fontWeight: "bold", color: "#0066cc" }}>
+                View our Fare Matrix
+              </Text>
             </TouchableOpacity>
           </View>
           <Button
